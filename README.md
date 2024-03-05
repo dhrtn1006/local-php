@@ -2,13 +2,15 @@
 
 해당 문서는 로컬 PHP 환경 구성에 대한 가이드를 제공합니다.
 
+해당 문서의 PHP 환경은 Rocky Linux 8 기반으로 구성되어 있으며,
+
 기본적으로 8.2 버전과 7.4 버전을 지원합니다.
 
 ## 설치
 
 ### GIT CLONE
 ```bash
-git clone 
+git clone https://github.com/dhrtn1006/local-php.git
 ```
 
 ### .gitkeep 파일 삭제
@@ -20,7 +22,7 @@ find . -name .gitkeep -exec rm -f {} \;
 
 ### 주의사항
 
-실행 전 해당 REPOSITORY의 DATABASE COMPOSE 파일을 실행하여 데이터베이스 컨테이너를 먼저 생성합니다.
+실행 전 [LOCAL-DATABASES REPOSITORY](https://github.com/dhrtn1006/local-databases)의 DATABASE COMPOSE 파일을 실행하여 데이터베이스 컨테이너를 먼저 생성합니다.
 
 이 것은 PHP 컨테이너의 NETWORK를 DATABASE 컨테이너와 연결하기 위함입니다.
 
@@ -49,6 +51,10 @@ docker-compose -f .docker/docker-compose.yaml build --no-cache
 PHP 7.4 버전의 경우 `http://localhost:8080/phpinfo.php` 경로로 접속하여 설치를 확인합니다.
 
 PHP 8.2 버전의 경우 `http://localhost:8090/phpinfo.php` 경로로 접속하여 설치를 확인합니다.
+
+### ROOT DIRECTORY 확인
+
+`project` 디렉토리가 ROOT DIRECTORY로 설정되어 있습니다.
 
 ### DATABASE 연결 확인
 
