@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+  php7.4:
+    image: local-php-7.4
+    container_name: local-php-7.4
+    build:
+      context: .
+      dockerfile: Dockerfile.php-7.4
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ../project:/var/www/html
+    networks:
+      - databases_local_shared_network
+    security_opt:
+      - seccomp:unconfined
+    tty: true
+    privileged: true
+    stdin_open: true
+    cgroup: host
+    restart: always
+  php8.2:
+    image: local-php-8.2
+    container_name: local-php-8.2
+    build:
+      context: .
+      dockerfile: Dockerfile.php-8.2
+    ports:
+      - "8090:8080"
+      - "8091:8081"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ../project:/var/www/html
+    networks:
+      - databases_local_shared_network
+    security_opt:
+      - seccomp:unconfined
+    tty: true
+    privileged: true
+    stdin_open: true
+    cgroup: host
+    restart: always
+networks:
+  databases_local_shared_network:
+    external: true
