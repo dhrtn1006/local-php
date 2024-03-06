@@ -13,7 +13,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
       - ../project:/var/www/html
     networks:
-      - databases_local_shared_network
+      - local-databases_local_shared_network
     security_opt:
       - seccomp:unconfined
     tty: true
@@ -34,7 +34,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
       - ../project:/var/www/html
     networks:
-      - databases_local_shared_network
+      - local-databases_local_shared_network
     security_opt:
       - seccomp:unconfined
     tty: true
@@ -43,5 +43,5 @@ services:
     cgroup: host
     restart: always
 networks:
-  databases_local_shared_network:
+  local-databases_local_shared_network:
     external: true
